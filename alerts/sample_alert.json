@@ -1,0 +1,14 @@
+{
+  "alert_id": "A-1001",
+  "timestamp": "2026-06-23T14:32:00Z",
+  "alert_name": "Suspicious PowerShell Execution",
+  "severity": "high",
+  "user": "jsmith",
+  "host": "WIN-DESKTOP-07",
+  "src_ip": "10.0.0.5",
+  "dest_ip": "185.220.101.47",
+  "process": "powershell.exe",
+  "command_line": "powershell -enc SQBFAFgAKAAu...",
+  "file_hash": "44d88612fea8a8f36de82e1278abb02f",
+  "description": "Encoded PowerShell command executed with outbound connection to external IP"
+}
