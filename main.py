@@ -1,5 +1,7 @@
 import json
 from enrichment.enrich import enrich_alert
+from triage.triage import triage_alert
+
 def load_alert(path):
     with open(path, 'r') as f:
         return json.load(f)
@@ -21,5 +23,6 @@ if __name__ == "__main__":
     print("\nEnriching alert...")
     enriched = enrich_alert(alert)
 
-    # Pretty-print the combined record so it's readable
-    print(json.dumps(enriched, indent=2))
+    print("\n Running AI triage...")
+    triage = triage_alert(enriched)
+    print(json.dumps(triage,indent=2))
