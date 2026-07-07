@@ -1,4 +1,5 @@
 import json
+from enrichment.abuseipdb import check_ip
 
 def load_alert(path):
     with open(path, 'r') as f:
@@ -16,4 +17,8 @@ def show_alert(alert):
 
 if __name__ == "__main__":
     alert = load_alert("alerts/sample_alert.json")
-    show_alert(alert)
+    #show_alert(alert)
+
+    print("\n Enrichment destination IP ")
+    result=check_ip(alert["dest_ip"])
+    print(result)
