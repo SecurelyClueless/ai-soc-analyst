@@ -1,5 +1,6 @@
 import json
 from enrichment.abuseipdb import check_ip
+from enrichment.virustotal import check_hash
 
 def load_alert(path):
     with open(path, 'r') as f:
@@ -22,3 +23,7 @@ if __name__ == "__main__":
     print("\n Enrichment destination IP ")
     result=check_ip(alert["dest_ip"])
     print(result)
+
+    print("\nEnriching file hash...")
+    hash_result = check_hash(alert["file_hash"])
+    print(hash_result)
