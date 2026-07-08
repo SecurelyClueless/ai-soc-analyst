@@ -2,6 +2,7 @@ import os
 import json
 from anthropic import Anthropic
 from dotenv import load_dotenv
+from triage.mitre import validate_mitre
 
 load_dotenv()
 
@@ -45,7 +46,7 @@ def triage_alert(enriched_alert):
     cleaned = raw_text.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
 
     try:
-        return json.loads(cleaned)
+        result = json.loads(cleaned)
     except json.JSONDecodeError as e:
         return {
             "error": "Failed to parse LLM response as JSON",
@@ -53,3 +54,9 @@ def triage_alert(enriched_alert):
             "cleaned_response": cleaned,
             "exception": str(e)
         }
+
+    # Validate the AI's proposed MITRE techniques against real ATT&CK data.
+    if "mitre" in result and isinstance(result["mitre"], list):
+        result["mitre"] = validate_mitre(result["mitre"])
+
+    return result
