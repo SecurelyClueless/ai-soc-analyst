@@ -1,15 +1,15 @@
 # Incident Report: Suspicious PowerShell Execution
 
-**Generated:** 2026-07-14 16:30
+**Generated:** 2026-07-14 17:27
 **Alert ID:** A-1001
 
 ---
 
 ## 1. Executive Summary
 
-User jsmith on WIN-DESKTOP-07 executed an encoded PowerShell command (powershell -enc) that established an outbound connection to a Tor exit node (185.220.101.47). The executable hash matches known malware with high VirusTotal detection rate (64/67 vendors). This combination strongly suggests command execution for malicious purposes, potentially for command-and-control communication or lateral movement.
+User jsmith executed an encoded PowerShell command from WIN-DESKTOP-07 that established a connection to external IP 185.220.101.47, a Tor exit node in Germany with an abuse score of 100. The process file hash matches a known malware signature in VirusTotal with 65 detections. This combination suggests potential command execution exploitation or malware staging.
 
-**Severity:** HIGH — Encoded PowerShell command executed from a user endpoint with outbound connection to a known Tor exit node, and the process hash is flagged as malicious by 64 VirusTotal vendors.
+**Severity:** HIGH — Encoded PowerShell execution connecting to a known Tor exit node with a file hash matching known malware (EICAR test file/malicious signature).
 **Triage Decision:** true_positive
 **Confidence:** high
 
@@ -37,8 +37,8 @@ User jsmith on WIN-DESKTOP-07 executed an encoded PowerShell command (powershell
 - Tor exit node: True
 
 **File Hash (44d88612fea8a8f36de82e1278abb02f)**
-- Malicious detections: 64
-- Known name: eicar.com-27777
+- Malicious detections: 65
+- Known name: eicar.com.1
 
 **Risk Flags:** suspicious_ip_reputation, tor_exit_node, known_malware
 
@@ -49,19 +49,20 @@ User jsmith on WIN-DESKTOP-07 executed an encoded PowerShell command (powershell
 | Technique ID | Name | Tactic | Status |
 |--------------|------|--------|--------|
 | T1059.001 | PowerShell | Execution | ✅ |
+| T1090.003 | Multi-hop Proxy | Command and Control | ✅ |
 | T1027 | Obfuscated Files or Information | Defense Evasion | ✅ |
-| T1071 | Application Layer Protocol | Command and Control | ✅ |
 
 ---
 
 ## 5. Recommended Response
 
-1. Isolate WIN-DESKTOP-07 from the network immediately to prevent further malware propagation
-2. Terminate the powershell.exe process and collect full process memory dump for forensic analysis
-3. Conduct a full endpoint scan and audit for signs of compromise, persistence mechanisms, and lateral movement attempts
-4. Review jsmith's account activity for signs of compromise or unusual access patterns
-5. Block 185.220.101.47 at the firewall and review network logs for any other connections to this IP or known Tor infrastructure
-6. Review PowerShell logs and execution history on the host for additional encoded or suspicious commands
+1. Immediately isolate WIN-DESKTOP-07 from the network to prevent potential lateral movement or data exfiltration
+2. Terminate the PowerShell process and collect full process memory dump and command history for forensic analysis
+3. Decode the PowerShell command (-enc parameter) to determine the actual payload and intent
+4. Review user jsmith's recent activity, login history, and credential usage for signs of compromise
+5. Block the destination IP 185.220.101.47 at the firewall and check for other connections to Tor infrastructure
+6. Scan the host with updated antivirus/EDR and perform full memory forensics
+7. Check for persistence mechanisms (scheduled tasks, registry modifications, startup folders)
 
 ---
 

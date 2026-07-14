@@ -1,0 +1,14 @@
+{
+  "alert_id": "A-1002",
+  "timestamp": "2026-07-02T03:14:00Z",
+  "alert_name": "Multiple Failed Login Attempts",
+  "severity": "medium",
+  "user": "administrator",
+  "host": "WIN-DC-01",
+  "src_ip": "45.155.205.233",
+  "dest_ip": "45.155.205.233",
+  "process": "lsass.exe",
+  "command_line": null,
+  "file_hash": null,
+  "description": "142 failed authentication attempts against the administrator account from a single external IP within 6 minutes, followed by one successful login"
+}

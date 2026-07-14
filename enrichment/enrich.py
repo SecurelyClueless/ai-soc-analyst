@@ -25,8 +25,13 @@ def build_risk_flags(ip_data,hash_data):
 
 def enrich_alert(alert):
     """Run every enrichment source and merge into one structured record."""
-    ip_data = check_ip(alert["dest_ip"])
-    hash_data = check_hash(alert["file_hash"])
+    ip_data = {}
+    hash_data = {}
+
+    if alert.get("dest_ip"):
+        ip_data = check_ip(alert["dest_ip"])
+    if alert.get("file_hash"):
+        hash_data = check_hash(alert["file_hash"])
 
     risk_flags = build_risk_flags(ip_data,hash_data)
 

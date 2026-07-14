@@ -1,0 +1,14 @@
+{
+  "alert_id": "A-1003",
+  "timestamp": "2026-07-04T11:47:00Z",
+  "alert_name": "Suspicious Outbound Beaconing",
+  "severity": "high",
+  "user": "mchen",
+  "host": "WIN-DESKTOP-14",
+  "src_ip": "10.0.0.22",
+  "dest_ip": "193.32.162.28",
+  "process": "svchost.exe",
+  "command_line": "svchost.exe -k netsvcs",
+  "file_hash": null,
+  "description": "Host made 340 outbound connections to a single external IP at regular 60-second intervals over 6 hours, consistent with C2 beaconing"
+}

@@ -1,0 +1,14 @@
+{
+  "alert_id": "A-1004",
+  "timestamp": "2026-07-05T09:20:00Z",
+  "alert_name": "PowerShell Script Execution",
+  "severity": "medium",
+  "user": "svc_backup",
+  "host": "WIN-FS-03",
+  "src_ip": "10.0.0.15",
+  "dest_ip": "10.0.0.40",
+  "process": "powershell.exe",
+  "command_line": "powershell.exe -File C:\\Scripts\\NightlyBackup.ps1 -Target \\\\WIN-FS-03\\Archive",
+  "file_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "description": "Scheduled PowerShell backup script executed by service account against internal file server during maintenance window"
+}

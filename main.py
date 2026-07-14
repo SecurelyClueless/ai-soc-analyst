@@ -1,7 +1,9 @@
 import json
+import glob
 from enrichment.enrich import enrich_alert
 from triage.triage import triage_alert
 from report.report import generate_report, save_report
+
 
 def load_alert(path):
     with open(path, 'r') as f:
@@ -18,17 +20,19 @@ def show_alert(alert):
     print("=" * 50)
 
 if __name__ == "__main__":
-    alert = load_alert("alerts/sample_alert.json")
-    #show_alert(alert)
+    alert_files = glob.glob("alerts/*.json")
+    print(f"Found {len(alert_files)} alerts to process.\n")
 
-    print("\nEnriching alert...")
-    enriched = enrich_alert(alert)
+    for path in alert_files:
+        alert = load_alert(path)
+        show_alert(alert)
 
-    print("\n Running AI triage...")
-    triage = triage_alert(enriched)
-    # print(json.dumps(triage,indent=2))
-    
-    print("\nGenerating incident report...")
-    report_text = generate_report(enriched, triage)
-    path = save_report(report_text, alert["alert_id"])
-    print(f"Report saved to: {path}")
+        print("Enriching...")
+        enriched = enrich_alert(alert)
+
+        print("Running AI triage...")
+        triage = triage_alert(enriched)
+
+        report_text = generate_report(enriched, triage)
+        out_path = save_report(report_text, alert["alert_id"])
+        print(f"Report saved: {out_path}\n")

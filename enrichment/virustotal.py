@@ -1,11 +1,17 @@
 import os 
 import requests
 from dotenv import load_dotenv
+from enrichment.cache import get_cached, set_cached
 
 load_dotenv()
 
 def check_hash(file_hash):
     """Look up a file on VirusTotal"""
+    
+    cached = get_cached("virustotal",file_hash)
+    if cached:
+        return cached
+
     url=f"https://www.virustotal.com/api/v3/files/{file_hash}"
 
     headers={
@@ -21,7 +27,7 @@ def check_hash(file_hash):
     
     stats = data.get("last_analysis_stats",{})
 
-    return {
+    result = {
         "source": "virustotal",
         "hash": file_hash,
         "malicious": stats.get("malicious"),      # how many engines said malicious
@@ -31,3 +37,6 @@ def check_hash(file_hash):
         "reputation": data.get("reputation"),
         "meaningful_name": data.get("meaningful_name"),  # file's known name, if any
     }
+
+    set_cached("virustotal", file_hash, result)
+    return result

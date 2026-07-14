@@ -1,12 +1,17 @@
 import os
 import requests
 from dotenv import load_dotenv
+from enrichment.cache import get_cached, set_cached
 
 # loading the vars from .env into the environmnet
 load_dotenv()
 
 def check_ip(ip):
     """Look up an IP address using the AbuseIPDB API."""
+    cached = get_cached("abuseipdb", ip)
+    if cached:
+        return cached
+
     url="https://api.abuseipdb.com/api/v2/check"
 
     headers={
@@ -26,7 +31,7 @@ def check_ip(ip):
     except requests.RequestException as e:
         return {"source": "abuseipdb", "ip": ip, "error": str(e)}
     
-    return {
+    result = {
         "source": "abuseipdb",
         "ip": ip,
         "abuse_score": data.get("abuseConfidenceScore"),   # 0-100
@@ -35,3 +40,6 @@ def check_ip(ip):
         "isp": data.get("isp"),
         "is_tor": data.get("isTor"),
     }
+
+    set_cached("abuseipdb",ip,result)
+    return result

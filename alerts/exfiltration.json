@@ -1,0 +1,14 @@
+{
+  "alert_id": "A-1005",
+  "timestamp": "2026-07-06T22:08:00Z",
+  "alert_name": "Large Outbound Data Transfer",
+  "severity": "high",
+  "user": "rpatel",
+  "host": "WIN-DESKTOP-09",
+  "src_ip": "10.0.0.31",
+  "dest_ip": "185.220.101.47",
+  "process": "rclone.exe",
+  "command_line": "rclone.exe copy C:\\Finance\\ remote:backup --transfers 8",
+  "file_hash": null,
+  "description": "4.2 GB transferred from finance file share to external endpoint outside business hours using a cloud sync utility not on the approved software list"
+}
