@@ -1,6 +1,7 @@
 import json
 from enrichment.enrich import enrich_alert
 from triage.triage import triage_alert
+from report.report import generate_report, save_report
 
 def load_alert(path):
     with open(path, 'r') as f:
@@ -25,4 +26,9 @@ if __name__ == "__main__":
 
     print("\n Running AI triage...")
     triage = triage_alert(enriched)
-    print(json.dumps(triage,indent=2))
+    # print(json.dumps(triage,indent=2))
+    
+    print("\nGenerating incident report...")
+    report_text = generate_report(enriched, triage)
+    path = save_report(report_text, alert["alert_id"])
+    print(f"Report saved to: {path}")
