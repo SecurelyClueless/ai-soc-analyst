@@ -35,7 +35,9 @@ def fetch_encoded_powershell(size=10):
     )
 
     # Each hit's actual document lives under "_source"
-    return [hit["_source"] for hit in response["hits"]["hits"]]
+    return [
+    {**hit["_source"], "_es_id": hit["_id"]}
+    for hit in response["hits"]["hits"]]
 
 
 if __name__ == "__main__":

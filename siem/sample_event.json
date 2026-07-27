@@ -1,0 +1,275 @@
+{
+  "_index": ".ds-winlogbeat-9.4.3-2026.07.14-000001",
+  "_id": "Wn7QeJ8ByV0R8kcLckPV",
+  "_version": 1,
+  "_source": {
+    "agent": {
+      "name": "DC1",
+      "id": "0959cc39-7e49-4311-a6ab-19217ee2c8f5",
+      "type": "winlogbeat",
+      "ephemeral_id": "d9efec69-c2ae-428e-8729-890f8ca1bafc",
+      "version": "9.4.3"
+    },
+    "process": {
+      "args": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-EncodedCommand",
+        "VwByAGkAdABlAC0ASABvAHMAdAAgACcAUwBPAEMAIABsAGEAYgAgAHQAZQBzAHQAIAAtACAAcwBpAG0AdQBsAGEAdABlAGQAIABlAG4AYwBvAGQAZQBkACAAcABhAHkAbABvAGEAZAAnAA=="
+      ],
+      "parent": {
+        "args": [
+          "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe"
+        ],
+        "name": "powershell.exe",
+        "pid": 3080,
+        "args_count": 1,
+        "entity_id": "{5974E185-5D5C-6A5C-E300-000000000B00}",
+        "executable": "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "command_line": "\"C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe\" "
+      },
+      "pe": {
+        "file_version": "10.0.20348.1 (WinBuild.160101.0800)",
+        "product": "Microsoft® Windows® Operating System",
+        "imphash": "c1e3c5e2580a8f5ad5f3df2bcaea7cab",
+        "description": "Windows PowerShell",
+        "original_file_name": "PowerShell.EXE",
+        "company": "Microsoft Corporation"
+      },
+      "name": "powershell.exe",
+      "pid": 1136,
+      "working_directory": "C:\\Users\\Administrator\\",
+      "args_count": 4,
+      "entity_id": "{5974E185-5E47-6A5C-E900-000000000B00}",
+      "hash": {
+        "sha256": "6633d15a90d38137abf5e08bc5c14cf35128eca168e875d9569295ecc88a4dbb",
+        "md5": "eb5acac8a6df89eb6ba751f468490734"
+      },
+      "executable": "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "command_line": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -EncodedCommand VwByAGkAdABlAC0ASABvAHMAdAAgACcAUwBPAEMAIABsAGEAYgAgAHQAZQBzAHQAIAAtACAAcwBpAG0AdQBsAGEAdABlAGQAIABlAG4AYwBvAGQAZQBkACAAcABhAHkAbABvAGEAZAAnAA=="
+    },
+    "@timestamp": "2026-07-19T05:19:03.626Z",
+    "winlog": {
+      "record_id": "4077",
+      "computer_name": "DC1.corp.local",
+      "process": {
+        "pid": 2328,
+        "thread": {
+          "id": 4544
+        }
+      },
+      "event_id": "1",
+      "task": "Process Create (rule: ProcessCreate)",
+      "provider_guid": "{5770385F-C22A-43E0-BF4C-06F5698FFBD9}",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "event_data": {
+        "Company": "Microsoft Corporation",
+        "LogonGuid": "{5974E185-5C6B-6A5C-4247-0A0000000000}",
+        "Description": "Windows PowerShell",
+        "IntegrityLevel": "High",
+        "TerminalSessionId": "1",
+        "ParentUser": "CORP\\Administrator",
+        "Product": "Microsoft® Windows® Operating System",
+        "FileVersion": "10.0.20348.1 (WinBuild.160101.0800)",
+        "LogonId": "0xa4742"
+      },
+      "opcode": "Info",
+      "provider_name": "Microsoft-Windows-Sysmon",
+      "version": 5,
+      "user": {
+        "identifier": "S-1-5-18",
+        "domain": "NT AUTHORITY",
+        "name": "SYSTEM",
+        "type": "User"
+      }
+    },
+    "ecs": {
+      "version": "8.17.0"
+    },
+    "related": {
+      "user": ["Administrator"],
+      "hash": [
+        "6633d15a90d38137abf5e08bc5c14cf35128eca168e875d9569295ecc88a4dbb",
+        "eb5acac8a6df89eb6ba751f468490734",
+        "c1e3c5e2580a8f5ad5f3df2bcaea7cab"
+      ]
+    },
+    "log": {
+      "level": "information"
+    },
+    "host": {
+      "hostname": "DC1",
+      "os": {
+        "build": "20348.587",
+        "kernel": "10.0.20348.587 (WinBuild.160101.0800)",
+        "name": "Windows Server 2022 Standard Evaluation",
+        "type": "windows",
+        "family": "windows",
+        "version": "10.0",
+        "platform": "windows"
+      },
+      "ip": [
+        "fe80::9dd6:d5c5:b2ba:f52",
+        "192.168.1.129",
+        "fe80::f545:ba02:aac1:dd60",
+        "10.20.0.10",
+        "fe80::889c:9490:8f07:5361",
+        "192.168.100.11"
+      ],
+      "name": "dc1",
+      "id": "5974e185-2b4a-40dd-aac4-c3c05a83f414",
+      "mac": ["00-0C-29-5B-65-00", "00-0C-29-5B-65-EC", "00-0C-29-5B-65-F6"],
+      "architecture": "x86_64"
+    },
+    "event": {
+      "ingested": "2026-07-19T05:19:14.641098079Z",
+      "code": "1",
+      "provider": "Microsoft-Windows-Sysmon",
+      "created": "2026-07-19T05:19:05.205Z",
+      "kind": "event",
+      "module": "sysmon",
+      "action": "Process creation",
+      "type": ["start"],
+      "category": ["process"]
+    },
+    "message": "Process Create:\nRuleName: -\nUtcTime: 2026-07-19 05:19:03.626\nProcessGuid: {5974E185-5E47-6A5C-E900-000000000B00}\nProcessId: 1136\nImage: C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe\nFileVersion: 10.0.20348.1 (WinBuild.160101.0800)\nDescription: Windows PowerShell\nProduct: Microsoft® Windows® Operating System\nCompany: Microsoft Corporation\nOriginalFileName: PowerShell.EXE\nCommandLine: \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -EncodedCommand VwByAGkAdABlAC0ASABvAHMAdAAgACcAUwBPAEMAIABsAGEAYgAgAHQAZQBzAHQAIAAtACAAcwBpAG0AdQBsAGEAdABlAGQAIABlAG4AYwBvAGQAZQBkACAAcABhAHkAbABvAGEAZAAnAA==\nCurrentDirectory: C:\\Users\\Administrator\\\nUser: CORP\\Administrator\nLogonGuid: {5974E185-5C6B-6A5C-4247-0A0000000000}\nLogonId: 0xa4742\nTerminalSessionId: 1\nIntegrityLevel: High\nHashes: MD5=EB5ACAC8A6DF89EB6BA751F468490734,SHA256=6633D15A90D38137ABF5E08BC5C14CF35128ECA168E875D9569295ECC88A4DBB,IMPHASH=C1E3C5E2580A8F5AD5F3DF2BCAEA7CAB\nParentProcessGuid: {5974E185-5D5C-6A5C-E300-000000000B00}\nParentProcessId: 3080\nParentImage: C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe\nParentCommandLine: \"C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe\" \nParentUser: CORP\\Administrator",
+    "user": {
+      "domain": "CORP",
+      "name": "Administrator",
+      "id": "S-1-5-18"
+    }
+  },
+  "fields": {
+    "process.hash.md5": ["eb5acac8a6df89eb6ba751f468490734"],
+    "winlog.event_data.LogonId": ["0xa4742"],
+    "event.category": ["process"],
+    "process.name.text": ["powershell.exe"],
+    "host.os.name.text": ["Windows Server 2022 Standard Evaluation"],
+    "winlog.provider_guid": ["{5770385F-C22A-43E0-BF4C-06F5698FFBD9}"],
+    "winlog.provider_name": ["Microsoft-Windows-Sysmon"],
+    "process.parent.command_line": [
+      "\"C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe\" "
+    ],
+    "process.parent.name": ["powershell.exe"],
+    "process.hash.sha256": [
+      "6633d15a90d38137abf5e08bc5c14cf35128eca168e875d9569295ecc88a4dbb"
+    ],
+    "process.parent.pid": [3080],
+    "related.hash": [
+      "6633d15a90d38137abf5e08bc5c14cf35128eca168e875d9569295ecc88a4dbb",
+      "eb5acac8a6df89eb6ba751f468490734",
+      "c1e3c5e2580a8f5ad5f3df2bcaea7cab"
+    ],
+    "host.hostname": ["DC1"],
+    "process.pid": [1136],
+    "winlog.computer_name": ["DC1.corp.local"],
+    "host.mac": ["00-0C-29-5B-65-00", "00-0C-29-5B-65-EC", "00-0C-29-5B-65-F6"],
+    "winlog.process.pid": [2328],
+    "host.os.version": ["10.0"],
+    "process.parent.entity_id": ["{5974E185-5D5C-6A5C-E300-000000000B00}"],
+    "winlog.record_id": ["4077"],
+    "host.os.name": ["Windows Server 2022 Standard Evaluation"],
+    "log.level": ["information"],
+    "agent.name": ["DC1"],
+    "host.name": ["dc1"],
+    "event.kind": ["event"],
+    "winlog.event_data.Company": ["Microsoft Corporation"],
+    "winlog.version": [5],
+    "host.os.type": ["windows"],
+    "user.id": ["S-1-5-18"],
+    "agent.hostname": ["DC1"],
+    "process.parent.args_count": [1],
+    "process.pe.product": ["Microsoft® Windows® Operating System"],
+    "related.user": ["Administrator"],
+    "host.architecture": ["x86_64"],
+    "process.name": ["powershell.exe"],
+    "event.provider": ["Microsoft-Windows-Sysmon"],
+    "event.code": ["1"],
+    "winlog.event_data.FileVersion": ["10.0.20348.1 (WinBuild.160101.0800)"],
+    "agent.id": ["0959cc39-7e49-4311-a6ab-19217ee2c8f5"],
+    "ecs.version": ["8.17.0"],
+    "process.parent.executable.text": [
+      "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe"
+    ],
+    "event.created": ["2026-07-19T05:19:05.205Z"],
+    "process.pe.description": ["Windows PowerShell"],
+    "winlog.event_data.LogonGuid": ["{5974E185-5C6B-6A5C-4247-0A0000000000}"],
+    "agent.version": ["9.4.3"],
+    "host.os.family": ["windows"],
+    "process.command_line.text": [
+      "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -EncodedCommand VwByAGkAdABlAC0ASABvAHMAdAAgACcAUwBPAEMAIABsAGEAYgAgAHQAZQBzAHQAIAAtACAAcwBpAG0AdQBsAGEAdABlAGQAIABlAG4AYwBvAGQAZQBkACAAcABhAHkAbABvAGEAZAAnAA=="
+    ],
+    "winlog.event_data.Description": ["Windows PowerShell"],
+    "winlog.process.thread.id": [4544],
+    "winlog.event_data.ParentUser": ["CORP\\Administrator"],
+    "user.name": ["Administrator"],
+    "process.working_directory": ["C:\\Users\\Administrator\\"],
+    "process.entity_id": ["{5974E185-5E47-6A5C-E900-000000000B00}"],
+    "process.parent.name.text": ["powershell.exe"],
+    "host.os.build": ["20348.587"],
+    "winlog.user.type": ["User"],
+    "host.ip": [
+      "fe80::9dd6:d5c5:b2ba:f52",
+      "192.168.1.129",
+      "fe80::f545:ba02:aac1:dd60",
+      "10.20.0.10",
+      "fe80::889c:9490:8f07:5361",
+      "192.168.100.11"
+    ],
+    "agent.type": ["winlogbeat"],
+    "process.pe.original_file_name": ["PowerShell.EXE"],
+    "process.executable.text": [
+      "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe"
+    ],
+    "event.module": ["sysmon"],
+    "host.os.kernel": ["10.0.20348.587 (WinBuild.160101.0800)"],
+    "user.domain": ["CORP"],
+    "host.id": ["5974e185-2b4a-40dd-aac4-c3c05a83f414"],
+    "process.executable": [
+      "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe"
+    ],
+    "winlog.user.identifier": ["S-1-5-18"],
+    "winlog.task": ["Process Create (rule: ProcessCreate)"],
+    "process.parent.executable": [
+      "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe"
+    ],
+    "process.pe.file_version": ["10.0.20348.1 (WinBuild.160101.0800)"],
+    "winlog.user.domain": ["NT AUTHORITY"],
+    "process.parent.command_line.text": [
+      "\"C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe\" "
+    ],
+    "process.args_count": [4],
+    "process.working_directory.text": ["C:\\Users\\Administrator\\"],
+    "winlog.event_data.IntegrityLevel": ["High"],
+    "process.args": [
+      "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "-NoProfile",
+      "-EncodedCommand",
+      "VwByAGkAdABlAC0ASABvAHMAdAAgACcAUwBPAEMAIABsAGEAYgAgAHQAZQBzAHQAIAAtACAAcwBpAG0AdQBsAGEAdABlAGQAIABlAG4AYwBvAGQAZQBkACAAcABhAHkAbABvAGEAZAAnAA=="
+    ],
+    "message": [
+      "Process Create:\nRuleName: -\nUtcTime: 2026-07-19 05:19:03.626\nProcessGuid: {5974E185-5E47-6A5C-E900-000000000B00}\nProcessId: 1136\nImage: C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe\nFileVersion: 10.0.20348.1 (WinBuild.160101.0800)\nDescription: Windows PowerShell\nProduct: Microsoft® Windows® Operating System\nCompany: Microsoft Corporation\nOriginalFileName: PowerShell.EXE\nCommandLine: \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -EncodedCommand VwByAGkAdABlAC0ASABvAHMAdAAgACcAUwBPAEMAIABsAGEAYgAgAHQAZQBzAHQAIAAtACAAcwBpAG0AdQBsAGEAdABlAGQAIABlAG4AYwBvAGQAZQBkACAAcABhAHkAbABvAGEAZAAnAA==\nCurrentDirectory: C:\\Users\\Administrator\\\nUser: CORP\\Administrator\nLogonGuid: {5974E185-5C6B-6A5C-4247-0A0000000000}\nLogonId: 0xa4742\nTerminalSessionId: 1\nIntegrityLevel: High\nHashes: MD5=EB5ACAC8A6DF89EB6BA751F468490734,SHA256=6633D15A90D38137ABF5E08BC5C14CF35128ECA168E875D9569295ECC88A4DBB,IMPHASH=C1E3C5E2580A8F5AD5F3DF2BCAEA7CAB\nParentProcessGuid: {5974E185-5D5C-6A5C-E300-000000000B00}\nParentProcessId: 3080\nParentImage: C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe\nParentCommandLine: \"C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe\" \nParentUser: CORP\\Administrator"
+    ],
+    "winlog.event_id": ["1"],
+    "winlog.user.name": ["SYSTEM"],
+    "process.parent.args": [
+      "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe"
+    ],
+    "event.action": ["Process creation"],
+    "event.ingested": ["2026-07-19T05:19:14.641Z"],
+    "process.pe.company": ["Microsoft Corporation"],
+    "@timestamp": ["2026-07-19T05:19:03.626Z"],
+    "process.pe.imphash": ["c1e3c5e2580a8f5ad5f3df2bcaea7cab"],
+    "winlog.channel": ["Microsoft-Windows-Sysmon/Operational"],
+    "host.os.platform": ["windows"],
+    "event.type": ["start"],
+    "process.command_line": [
+      "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -EncodedCommand VwByAGkAdABlAC0ASABvAHMAdAAgACcAUwBPAEMAIABsAGEAYgAgAHQAZQBzAHQAIAAtACAAcwBpAG0AdQBsAGEAdABlAGQAIABlAG4AYwBvAGQAZQBkACAAcABhAHkAbABvAGEAZAAnAA=="
+    ],
+    "winlog.opcode": ["Info"],
+    "agent.ephemeral_id": ["d9efec69-c2ae-428e-8729-890f8ca1bafc"],
+    "winlog.event_data.TerminalSessionId": ["1"],
+    "winlog.event_data.Product": ["Microsoft® Windows® Operating System"],
+    "user.name.text": ["Administrator"]
+  }
+}

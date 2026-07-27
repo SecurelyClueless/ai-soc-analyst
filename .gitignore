@@ -9,3 +9,5 @@ venv/
 Workflow/
 # Cached API responses (later)
 cache/
+#
+certs/
