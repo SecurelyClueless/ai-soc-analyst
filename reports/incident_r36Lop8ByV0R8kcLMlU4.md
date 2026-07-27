@@ -1,15 +1,15 @@
 # Incident Report: Encoded PowerShell Execution
 
-**Generated:** 2026-07-27 17:47
+**Generated:** 2026-07-28 03:20
 **Alert ID:** r36Lop8ByV0R8kcLMlU4
 
 ---
 
 ## 1. Executive Summary
 
-PowerShell.exe was executed on domain controller DC1 by Administrator using an encoded command parameter. The encoded payload decodes to 'Write-Host 'run number four'', which is a benign output command. While encoded PowerShell execution is commonly associated with obfuscation techniques, the actual payload contains no malicious indicators.
+PowerShell was executed with an encoded command on domain controller DC1 by the Administrator user. The encoded payload decodes to 'Write-Host 'run number four'', which is a harmless output command. While encoded PowerShell commands are commonly associated with obfuscation tactics, the actual payload in this case is benign.
 
-**Severity:** MEDIUM — Encoded PowerShell execution on a domain controller by Administrator is suspicious, but the decoded command appears benign and the executable hash shows no malicious detections.
+**Severity:** MEDIUM — Encoded PowerShell execution on a domain controller by Administrator is suspicious, but the decoded command appears benign and the executable hash shows no malicious indicators.
 **Triage Decision:** needs_investigation
 **Confidence:** medium
 
@@ -49,15 +49,15 @@ PowerShell.exe was executed on domain controller DC1 by Administrator using an e
 | Technique ID | Name | Tactic | Status |
 |--------------|------|--------|--------|
 | T1027 | Obfuscated Files or Information | Defense Evasion | ✅ |
-| T1059.001 | PowerShell | Execution | ✅ |
 
 ---
 
 ## 5. Recommended Response
 
-1. Verify if the Administrator account intentionally executed this command or if credentials were compromised
-2. Review PowerShell execution logs on DC1 for additional encoded commands from this session
-3. Confirm whether encoded PowerShell commands are part of approved administrative procedures in this environment
+1. Review the context of why Administrator executed this encoded command on the domain controller
+2. Check for additional PowerShell execution events from this user around the same timeframe
+3. Verify if this is part of a scheduled task or legitimate administrative script
+4. Monitor for similar patterns with genuinely malicious payloads
 
 ---
 

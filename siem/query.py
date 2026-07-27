@@ -14,30 +14,32 @@ def get_client():
     )
 
 
-def fetch_encoded_powershell(size=10):
-    """Find Sysmon process-creation events using encoded PowerShell."""
+def fetch_encoded_powershell(after=None, size=100):
+    """Find Sysmon Event 1 encoded-PowerShell events newer than `after`."""
     es = get_client()
 
-    query = {
-        "bool": {
-            "must": [
-                {"term": {"winlog.event_id": "1"}},
-                {"match": {"process.command_line.text": "EncodedCommand"}},
-            ]
-        }
-    }
+    must = [
+        {"term": {"winlog.event_id": "1"}},
+        {"match": {"process.command_line.text": "EncodedCommand"}},
+    ]
+
+    # Only fetch events strictly newer than the watermark.
+    if after:
+        must.append({"range": {"@timestamp": {"gt": after}}})
+
+    query = {"bool": {"must": must}}
 
     response = es.search(
         index="winlogbeat-*",
         query=query,
         size=size,
-        sort=[{"@timestamp": {"order": "desc"}}],
+        sort=[{"@timestamp": {"order": "asc"}}],   # oldest first — see below
     )
 
-    # Each hit's actual document lives under "_source"
     return [
-    {**hit["_source"], "_es_id": hit["_id"]}
-    for hit in response["hits"]["hits"]]
+        {**hit["_source"], "_es_id": hit["_id"]}
+        for hit in response["hits"]["hits"]
+    ]
 
 
 if __name__ == "__main__":

@@ -1,17 +1,17 @@
 # Incident Report: Encoded PowerShell Execution
 
-**Generated:** 2026-07-27 17:48
+**Generated:** 2026-07-28 03:20
 **Alert ID:** CX7NeJ8ByV0R8kcLFEO1
 
 ---
 
 ## 1. Executive Summary
 
-PowerShell was executed with an encoded command on DC1 by the Administrator user. Decoding the command reveals a benign test message ('SOC lab test - simulated encoded payload'). The PowerShell executable hash matches the standard system binary with no malicious indicators from VirusTotal.
+PowerShell was executed with an encoded command on DC1 by the Administrator user. The encoded command decodes to a Write-Host statement containing 'SOC lab test - simulated encoded payload'. The PowerShell.exe hash shows no malicious detections (70 undetected engines, 0 malicious). This appears to be a legitimate test or training exercise.
 
-**Severity:** LOW — Encoded PowerShell execution by Administrator on domain controller, but hash analysis shows standard PowerShell binary with no malicious detections.
-**Triage Decision:** false_positive
-**Confidence:** high
+**Severity:** LOW — Encoded PowerShell execution from Administrator on domain controller contains benign test payload with no malicious hash verdicts.
+**Triage Decision:** needs_investigation
+**Confidence:** medium
 
 ---
 
@@ -54,9 +54,9 @@ PowerShell was executed with an encoded command on DC1 by the Administrator user
 
 ## 5. Recommended Response
 
-1. Confirm with Administrator whether this was an authorized SOC lab test or training exercise
-2. Review PowerShell execution logging to verify no additional suspicious commands were executed in the same session
-3. Document as a simulated security test if confirmed authorized
+1. Verify with Administrator that this was an authorized SOC lab test or training exercise
+2. If confirmed as authorized testing, document and whitelist this alert to reduce future false positives
+3. If not authorized, investigate the source and intent of the encoded command execution
 
 ---
 
